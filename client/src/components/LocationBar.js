@@ -45,11 +45,18 @@ class LocationBar extends Component {
 
 
   render() {
+
+    let currTempC = Math.round(parseFloat(this.state.temp) - 273.15);
+    let currTempF = Math.round(((9.0 / 5) * currTempC) + 32);
+
     let tempDisplay = "";
+    let cDisp = "";
+    let fDisp = "";
     if (this.state.hasSearched) {
-      tempDisplay = "Temperature";
+      tempDisplay = "Current Temperature";
+      cDisp = currTempC + " degrees Celsius";
+      fDisp = currTempF + " degrees Farenheight";
     } else {
-      tempDisplay = "";
     }
 
     return (
@@ -63,7 +70,8 @@ class LocationBar extends Component {
           <Button type="submit" color="success">Find</Button>
         </Form>
         <h2>{tempDisplay}</h2>
-        <h2>{this.state.temp}</h2>
+        <h4>{cDisp}</h4>
+        <h4>{fDisp}</h4>
       </Container>
     );
   }
