@@ -5,6 +5,7 @@ How to run
 
 ### Clone repository
 `git clone https://github.com/shravanhariharan2/weather-app.git`
+
 `cd weather-app`
 
 ### Install dependencies
@@ -14,6 +15,7 @@ How to run
 `npm run dev`
 
 Front end on localhost:3000
+
 Back end on localhost:5000
 
 #### Run just front end
