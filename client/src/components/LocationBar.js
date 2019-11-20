@@ -54,8 +54,8 @@ class LocationBar extends Component {
     let fDisp = "";
     if (this.state.hasSearched) {
       tempDisplay = "Current Temperature";
-      cDisp = currTempC + " degrees Celsius";
-      fDisp = currTempF + " degrees Farenheight";
+      cDisp = currTempC + "\u00b0C";
+      fDisp = currTempF + "\u00b0F";
     } else {
     }
 
@@ -64,10 +64,10 @@ class LocationBar extends Component {
         <h1>Weather Tracker</h1>
         <Form className="location-bar" onSubmit={this.onSubmit}>
           <FormGroup>
-            <Label>Location</Label>
+            <Label>City</Label>
             <Input value={this.state.location} name="location" onChange={this.onChangeLocation} placeholder="Ex. London, Los Angeles, Seattle"></Input>
           </FormGroup>
-          <Button type="submit" color="success">Find</Button>
+          <Button type="submit" className="submit-btn">Find</Button>
         </Form>
         <h2>{tempDisplay}</h2>
         <h4>{cDisp}</h4>

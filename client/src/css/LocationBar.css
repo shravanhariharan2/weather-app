@@ -6,6 +6,14 @@
     padding: 10vh 0vh;
 }
 
+.submit-btn {
+    background-color: transparent;
+}
+
+input {
+    padding: 15vh 0vh;
+}
+
 h1 {
     text-align: center;
     font-size: 48px;

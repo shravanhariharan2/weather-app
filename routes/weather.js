@@ -22,6 +22,11 @@ router.post("/", (req, res) => {
 
   const location = req.body.city;
 
+  //format location string
+  String.prototype.toProperCase = function () {
+    return this.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+  };
+
   function getCodeByCity(city) {
     return cityIDs.filter(
       function (data) {
@@ -30,12 +35,12 @@ router.post("/", (req, res) => {
     );
   }
 
-  const cityCode = getCodeByCity(location);
-  const url = "https://api.openweathermap.org/data/2.5/forecast?id=" + cityCode[0].id + "&APPID=" + keyJSON.apiKey;
+  const cityCode = getCodeByCity(location.toProperCase());
+  const url = "https://api.openweathermap.org/data/2.5/weather?id=" + cityCode[0].id + "&APPID=" + keyJSON.apiKey;
   axios.get(url)
     .then(response => {
       //need to toString() because can't res.send() int values (treats as status code)
-      res.send(response.data.list[0].main.temp.toString());
+      res.send(response.data.main.temp.toString());
     })
     .catch(err => {
       console.log(err);
